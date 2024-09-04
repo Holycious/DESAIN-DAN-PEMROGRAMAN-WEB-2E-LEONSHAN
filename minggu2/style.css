@@ -1,5 +1,10 @@
 body{
-    background: lightcyan;
+    background: url(../image/tree.png), url(../image/bunga2.jpg);
+    background-size: 250px, 100%;
+    background-repeat: no-repeat, no-repeat;
+    background-position: left, center;
+    background-position-x: 300px, 0px;
+    background-position-y: 210px, 0px;
     color: white;
 }
 h2 {
