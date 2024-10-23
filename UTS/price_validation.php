@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Struk Pembelian</title>
+    <title>Cek Harga - Laundry XYZ</title>
     <link rel="stylesheet" href="price_validation.css">
 </head>
 <body>
@@ -87,6 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
             <button type="submit">CHECK</button>
         </form>
+ 
 
         <?php if (isset($priceDetails)): ?>
         <div class="receipt">
@@ -120,8 +121,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="footer">
                 Terima kasih telah menggunakan layanan kami!
             </div>
+
         </div>
         <?php endif; ?>
     </div>
+    <footer>
+      <p>&copy; 2024 Laundry XYZ. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
