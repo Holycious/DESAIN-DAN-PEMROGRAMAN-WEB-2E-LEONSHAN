@@ -18,7 +18,8 @@ body {
 }
 
 .wrapper {
-    width: 420px;
+    width: 90%;
+    max-width: 420px;
     backdrop-filter: blur(10px);
     box-shadow: 0 0 40px #333;
     color: #fff;
