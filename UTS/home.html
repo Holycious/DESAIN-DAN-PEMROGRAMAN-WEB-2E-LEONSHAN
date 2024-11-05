@@ -14,9 +14,9 @@
         $(".banner-slider img:gt(0)").hide();
         setInterval(function () {
           $(".banner-slider img:first")
-            .fadeOut(1000)
+            .fadeOut(800)
             .next()
-            .fadeIn(1000)
+            .fadeIn(800)
             .end()
             .appendTo(".banner-slider");
         }, 3000);
