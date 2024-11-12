@@ -47,6 +47,9 @@ body {
     font-weight: bold;
 }
 
+option{
+    color: #333;
+}
 .navbar a:hover {
     color: white;
 }
@@ -54,9 +57,10 @@ body {
 .wrapper {
     width: 90%; 
     max-width: 500px; 
-    backdrop-filter: blur(10px);
+    background-color: #fff;
+    /* backdrop-filter: blur(10px); */
     box-shadow: 0 0 40px #333;
-    color: #fff;
+    color: #333;
     border-radius: 20px;
     padding: 30px 40px;
     font-weight: 600;
@@ -66,12 +70,16 @@ body {
 form input[type="checkbox"] {
     margin-right: 10px;
 }
-
+label {
+    color: #333;
+}
 h1 {
+    color: #333;
     text-align: center;
 }
 
 form {
+    color: #333;
     margin-bottom: 20px;
 }
 
@@ -86,6 +94,7 @@ form {
 }
 
 input, select, button {
+    color: slategrey;
     display: block;
     width: 100%;
     padding: 10px;

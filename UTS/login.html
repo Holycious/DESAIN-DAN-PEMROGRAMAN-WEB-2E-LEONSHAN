@@ -1,10 +1,10 @@
-<?php
+<!-- <?php
 session_start();
 if (isset($_SESSION['username'])) {
     header("Location: home.html"); // Jika sudah login, langsung ke halaman home
     exit();
 }
-?>
+?> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,29 +45,40 @@ if (isset($_SESSION['username'])) {
 
     <script>
         document.getElementById('loginForm').addEventListener('submit', function (e) {
-
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value;
-
+    
             const errorContainer = document.getElementById('errorContainer');
             errorContainer.textContent = ''; 
-
+    
             let errorMessages = [];
-
+    
             if (username === '' || password === '') {
                 errorMessages.push('Username atau password harus diisi.');
-            }else if (password.length > 6) {
+            } else if (password.length > 6) {
                 errorMessages.push('Password maksimal 6 karakter.');
             } else if (!/[a-z]/.test(password) || !/[A-Z]/.test(password)) {
                 errorMessages.push('Password harus terdiri dari huruf besar dan kecil.');
             }
-
+    
             if (errorMessages.length > 0) {
-                e.preventDefault(); 
-                errorContainer.innerHTML = errorMessages.join('<br>'); 
-                errorContainer.style.display = 'block'; 
+                e.preventDefault();
+                errorContainer.innerHTML = errorMessages.join('<br>');
+                errorContainer.style.display = 'block';
+            }
+        });
+
+        window.addEventListener('load', function () {
+            const params = new URLSearchParams(window.location.search);
+            const errorMessage = params.get('error');
+    
+            if (errorMessage) {
+                const errorContainer = document.getElementById('errorContainer');
+                errorContainer.innerHTML = errorMessage;
+                errorContainer.style.display = 'block';
             }
         });
     </script>
+    
 </body>
 </html>

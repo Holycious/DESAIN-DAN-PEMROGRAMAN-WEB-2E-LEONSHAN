@@ -6,21 +6,32 @@ if (!isset($_SESSION['username'])) {
 }
 
 function calculatePrice($weight, $service, $speed, $isMember) {
+    // If weight is less than 1, set all prices to 0
+    if ($weight < 1) {
+        return [
+            'basePrice' => 0,
+            'additionalFee' => 0,
+            'total' => 0,
+            'discount' => 0,
+            'finalPrice' => 0
+        ];
+    }
+
     $prices = ['Cuci Kering' => 5000, 'Cuci Setrika' => 8000, 'Setrika' => 6000];
     $pricePerKilo = $prices[$service]; 
     $basePrice = $pricePerKilo * $weight; 
     $additionalFee = 0;
+    
     if ($speed == "Ekspress") {
         $additionalFee = 2000 * $weight;
     }
-
+    
     $totalPrice = $basePrice + $additionalFee; 
-
+    
     $discount = 0;
     if ($isMember) {
         $discount = 0.1 * $totalPrice;
     }
-
     $finalPrice = $totalPrice - $discount;
 
     return [
@@ -31,9 +42,8 @@ function calculatePrice($weight, $service, $speed, $isMember) {
         'finalPrice' => $finalPrice
     ];
 }
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $weight = intval($_POST['weight']);
+    $weight = floatval($_POST['weight']);
     $service = $_POST['service'];
     $speed = $_POST['speed'];
     $isMember = isset($_POST['isMember']);
@@ -98,8 +108,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <th>Harga</th>
                 </tr>
                 <tr>
-                    <td><?= $service?> (<?= $weight ?> Kg x Rp <?= number_format($priceDetails['basePrice'] / $weight, 0, ',', '.') ?>)</td>
-                    <td>Rp <?= number_format($priceDetails['basePrice'], 0, ',', '.') ?></td>
+                <?php if ($weight > 0): ?>
+                <td><?= $service?> (<?= $weight ?> Kg x Rp <?= number_format($priceDetails['basePrice'] / $weight, 0, ',', '.') ?>)</td>
+                    <?php else: ?>
+                    <td><?= $service?> (<?= $weight ?> Kg)</td>
+                    <?php endif; ?> 
+                <td>Rp <?= number_format($priceDetails['basePrice'], 0, ',', '.') ?></td>
+
                 </tr>
                 <?php if ($priceDetails['additionalFee'] > 0): ?>
                 <tr>
