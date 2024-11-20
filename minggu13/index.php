@@ -57,7 +57,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                    <a class="btn btn-danger" href="hapus.php?id=<?php echo $row['id']; ?>">Hapus</a>
+                                    <a class="btn btn-danger" href="proses.php?aksi=hapus&id=<?php echo $row['id']; ?>">Hapus</a>
                                 </div>
                             </div>
                         </div>
